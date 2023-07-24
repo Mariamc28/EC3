@@ -36,7 +36,7 @@ GET {{server}}/categorias
 ###
 GET {{server}}/profile/categorias
 ###
-GET {{server}}/cursos/categorias
+GET {{server}}/instrumentos/categorias
 ###
 
 

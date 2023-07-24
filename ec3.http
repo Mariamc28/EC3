@@ -12,8 +12,53 @@ GET {{server}}/categorias?size=2
 ###
 GET {{server}}/categorias?size=2&page=1
 
+###
+GET {{server}}/categorias?sort=creditos,desc
+
+###
+GET {{server}}/categorias?size=2&page=1&sort=creditos,desc
+
 ### 
 POST {{server}}/categorias
 Content-Type: application/json
 
-{"nombre": "Instrumentos de cuerda"}
+{"nombre": "Instrumento de viento"}
+
+
+###
+
+DELETE {{server}}/categorias/203
+
+###
+GET {{server}}/categorias/search/findByNombre?nombre=Instrumento de viento
+###
+GET {{server}}/categorias
+###
+GET {{server}}/profile/categorias
+###
+GET {{server}}/cursos/categorias
+###
+
+
+#################
+
+
+GET {{server}}/instrumentos
+###
+GET {{server}}/instrumentos/2/categorias
+###
+POST {{server}}/instrumentos
+Content-Type: application/json
+
+{"nombre": "Flauta"}
+
+### 
+PATCH {{server}}/categorias/2
+Content-Type: application/json
+
+{"id_instrumentos": 2}
+
+
+
+###
+GET {{server}}/cursos/52/carrera

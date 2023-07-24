@@ -1,0 +1,62 @@
+package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import java.util.List;
+import java.util.Map;
+import java.lang.String;
+import java.lang.Object;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+@Controller	
+@RequestMapping(path="/")
+public class MainController {
+
+    @Autowired
+	private CategoriaRepository repository;
+
+    @GetMapping(path="/")
+	public @ResponseBody String home () {return "Mariamc - Maria Muñoz";}
+
+   	@GetMapping(path="/codigo")
+	public @ResponseBody String codigo () {return "Mariamc";}
+
+   	@GetMapping(path="/nombre-completo")
+	public @ResponseBody String nombre () {return "Maria Muñoz";}
+
+
+	
+	@PostMapping(path="/api/categoria/nuevo")
+	public @ResponseBody String nuevo (@RequestParam String nombre) {
+		Categoria n = new Categoria();
+		n.setNombre(nombre);
+		
+		repository.save(n);
+		return "Categoria Guardada";
+	}
+
+	@DeleteMapping(path="/api/categoria/eliminar")
+	public @ResponseBody String eliminar (@RequestParam Integer id) {
+		Categoria n = new Categoria();
+		n.setId(id);
+		repository.delete(n);
+		return "Categoria Eliminada";
+	}
+
+	@GetMapping(path="/api/curso/listar")
+	public @ResponseBody Iterable<Categoria> listar() {
+		return repository.findAll();
+	}
+
+}
+    
+

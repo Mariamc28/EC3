@@ -1,0 +1,19 @@
+@server = https://mariamc28-fantastic-winner-vx7767469rrhx9j7-8080.preview.app.github.dev
+
+###
+
+GET {{server}}
+###
+GET {{server}}/categorias
+
+###
+GET {{server}}/categorias?size=2
+
+###
+GET {{server}}/categorias?size=2&page=1
+
+### 
+POST {{server}}/categorias
+Content-Type: application/json
+
+{"nombre": "Instrumentos de cuerda"}
